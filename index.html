@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="./src/output.css" rel="stylesheet">
+    <link href="./src/style.css" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> jeu des cartes</title>
+</head>
+
+<body class="body bg-[url(images/Gemini_Generated_Image_pbamdspbamdspbam.jpg)]">
+    <!-------------------------------Header---------------------->
+    <!---------------------------page de joueurs------------------>
+    <section>
+        <div class="pt-20 flex mx-5">
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+                <!-- Personne de gauche -->
+                <circle cx="6.5" cy="8.5" r="3.5" />
+                <path d="M6.5 13c-3.04 0-5.5 1.9-5.5 4.25V20h11v-2.75C12 14.9 9.54 13 6.5 13z" />
+
+                <!-- Personne de droite -->
+                <circle cx="17.5" cy="8.5" r="3.5" />
+                <path d="M17.5 13c-3.04 0-5.5 1.9-5.5 4.25V20h11v-2.75c0-2.35-2.46-4.25-5.5-4.25z" />
+
+                <!-- Personne au centre (au premier plan avec bordure blanche) -->
+                <circle cx="12" cy="11.5" r="4" stroke-width="1.5" />
+                <path d="M12 16.5c-3.5 0-6.5 2.1-6.5 4.7v0.8h13v-0.8c0-2.6-3-4.7-6.5-4.7z" stroke-width="1.5" />
+            </svg>
+            <h1 class="text-white text-xl font-bold">Les joueurs</h1>
+            </div>
+         <div class="mx-15 text-white ">
+            <p class="italic">Gerez vos profils et choisis votre joueure pour commencer. </p>
+         </div>
+
+         <!--div pour ajoute et modifier un joueur-->
+         <div class="mx-7 mt-10 bg-[#0F172A] h-70 rounded-xl">
+
+            <div class="flex">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+                    <circle cx="6.5" cy="8.5" r="3.5" />
+                    <path d="M6.5 13c-3.04 0-5.5 1.9-5.5 4.25V20h11v-2.75C12 14.9 9.54 13 6.5 13z" />
+                </svg>
+                <p class="text-white italic"> Ajouter / Modifier Un joueure </p>
+            </div>
+            <div class="px-4">
+                <p class="text-white ">enter your nickname</p>
+                <input type="text" id="nickname" class="bg-[#1F2937] rounded-xl text-white "
+                    placeholder="entrez votre nom" class="w-25">
+            </div>
+
+            <div class="px-4 pt-4 ">
+                <p class="text-white">Avatar</p>
+            </div>
+            <!----------------------div for avatars --------------------->
+            <div class=" grid grid-cols-5 gap-4 mt-5 px-18">
+
+                <img src="./src/images/cat (2).svg" alt="Avatar" class="w-10 h-10">
+                <img src="./src/images/cleopatra.svg" alt="Avatar" class="w-10 h-10">
+
+                <img src="./src/images/hound.svg" alt="Avatar" class="w-10 h-10">
+                <img src="./src/images/invisible-face.svg" alt="Avatar" class="w-10 h-10">
+            </div>
+            <div class="grid grid-cols-2 pt-8  px-8 gap-18">
+                <button type="button" id="Enregistrer"
+                    class="bg-[#3B82F6] text-white rounded-xl w-25">Enregistrer</button>
+                <button type="button" id="annuler"
+                    class="border border-indigo-600 rounded-xl text-white w-25">Annuler</button>
+            </div>
+
+        </div>
+                
+       <div id="players-list" class="mx-7 mt-10 bg-[#0F172A] h-70 rounded-xl p-4">
+        <div class="flex gap-4">    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+                <!-- Personne de gauche -->
+                <circle cx="6.5" cy="8.5" r="3.5" />
+                <path d="M6.5 13c-3.04 0-5.5 1.9-5.5 4.25V20h11v-2.75C12 14.9 9.54 13 6.5 13z" />
+
+                <!-- Personne de droite -->
+                <circle cx="17.5" cy="8.5" r="3.5" />
+                <path d="M17.5 13c-3.04 0-5.5 1.9-5.5 4.25V20h11v-2.75c0-2.35-2.46-4.25-5.5-4.25z" />
+
+                <!-- Personne au centre (au premier plan avec bordure blanche) -->
+                <circle cx="12" cy="11.5" r="4" stroke-width="1.5" />
+                <path d="M12 16.5c-3.5 0-6.5 2.1-6.5 4.7v0.8h13v-0.8c0-2.6-3-4.7-6.5-4.7z" stroke-width="1.5" />
+            </svg>
+            <p class="italic text text-white text-left">Liste des joueurs</p>
+        </div>
+
+    </div>
+         
+     </section>
+
+
+
+
+    </div>
+
+   
+
+
+    <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
