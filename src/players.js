@@ -1,7 +1,7 @@
 const RegexName = /^[A-Za-z0-9]{3,15}$/;
 let selectedAvatar = "";
 const Avatars = document.querySelectorAll("#avatars img")
-const players = [];
+let players = [];
  
 
     Avatars.forEach(avatar => {
@@ -47,19 +47,30 @@ players.push(player);
 const playerslist = document.getElementById("players-list")
 const images = document.getElementById(player.avatar)
 playerslist.innerHTML += `
-<div  class="flex gap-4 pt-5"> 
+<div  class="flex gap-4 pt-5 " data-id="${player.id}"> 
    
     <img src="${images.src}" class="w-10 h-10"></img>
     <p class  = "text-white ">
         ${player.nickname}
-    </p>
+    </p> 
+    <div class= "ml-30">
+    <button type ="button"  class=" remove border border-indigo-600 rounded-xl text-white w-25" > Suprimer </button>
+    </div>
     
 
 </div>`
 }
 
-export function removePlayers (){
-    const playerslist = document.getElementById("players-list")
-    playerslist.innerHTML= "";
-}
+export function removePlayers (button){
+
+    const playerElement = button.closest("[data-id]");
+
+    const playerId = playerElement.dataset.id;
+
+    players = players.filter(player => player.id !== playerId);
+
+    playerElement.remove();
+
+}    
+
 

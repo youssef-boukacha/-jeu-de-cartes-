@@ -7,7 +7,14 @@ btnSave.addEventListener("click", function(){
     })
 
 import { removePlayers } from "./players.js";
-const annuler = document.getElementById("annuler")
-annuler.addEventListener("click",function(){
-    removePlayers();
-})
+const playerslist = document.getElementById("players-list")
+playerslist.addEventListener("click", function(event) {
+
+    if (event.target.classList.contains("remove")) {
+
+       
+removePlayers(event.target);
+        
+    }
+
+});
