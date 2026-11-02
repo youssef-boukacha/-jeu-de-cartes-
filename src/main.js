@@ -18,3 +18,5 @@ removePlayers(event.target);
     }
 
 });
+
+

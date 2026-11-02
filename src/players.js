@@ -49,17 +49,67 @@ const images = document.getElementById(player.avatar)
 playerslist.innerHTML += `
 <div  class="flex gap-4 pt-5 " data-id="${player.id}"> 
    
+<div class="selected inline-flex items-center gap-2 w-fit p-1">
     <img src="${images.src}" class="w-10 h-10"></img>
     <p class  = "text-white ">
         ${player.nickname}
     </p> 
-    <div class= "ml-30">
+    </div>
+
+    <div>
     <button type ="button"  class=" remove border border-indigo-600 rounded-xl text-white w-25" > Suprimer </button>
     </div>
     
 
 </div>`
 }
+   
+  
+        const playerslist = document.getElementById("players-list")
+    playerslist.addEventListener("click",event =>
+    {
+        const selected = event.target.closest(".selected")
+        if (!selected) return;
+
+        const playerElement = selected.closest("[data-id]")
+        if (!playerElement) return;
+
+        const playerId = playerElement.dataset.id;
+        
+        const player  = players.find(player =>
+            player.id === playerId
+        );
+        if (!player) return;
+         document.querySelectorAll(".selected").forEach(profile => {
+        profile.classList.remove(
+            "border-2",
+            "border-indigo-500",
+            "rounded-md"
+        );
+    });
+          
+         // Add border to selected profile
+ selected.classList.add(
+        "border-2",
+        "border-indigo-500",
+        "rounded-md"
+    );
+        const avatar = document.getElementById(player.avatar);
+        const profile = document.getElementById("img")
+
+        profile.innerHTML = 
+
+         `
+         <img src="${avatar.src}" class="w-15 h-15 border border-2 rounded-md">
+        <p class="text-white font-serif">${player.nickname}</p>
+    `;
+
+       localStorage.setItem("selectedPlayer", playerId);
+
+    });
+
+
+
 
 export function removePlayers (button){
 
@@ -72,5 +122,9 @@ export function removePlayers (button){
     playerElement.remove();
 
 }    
+
+// export function selection() {
+    
+// }
 
 
