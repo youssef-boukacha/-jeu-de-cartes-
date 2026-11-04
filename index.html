@@ -3,36 +3,36 @@
 
 <head>
     <meta charset="UTF-8">
-<link rel="stylesheet" href="./src/output.css">   
+    <link rel="stylesheet" href="./src/output.css">
     <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> jeu des cartes</title>
 </head>
 
-<body class="body bg-[url('./images/background.jpg')]">
-           <!-------------------------------Header---------------------->
-   
+<body class="body bg-[url('./images/background.jpg')] bg-fixed">
+    <!-------------------------------Header---------------------->
+
     <header>
         <div class="flex justify-between  px-4 py-4">
-        
-            <div >
-            <img src="./src/images/Empereur Citoyen Esclave Emblem.png" alt="logo" width="80" height="80"
-                class="rounded-md ">
-        </div>
-
-        <div class="flex gap-4">
-            <div id="img" class=" flex"  >
-                 <p class="text-white"> </p>
-            </div>
 
             <div>
-                <button type="button" id="deconnexion" class=" border-2 rounded-md text-white"> Déconnexion</button>
+                <img src="./src/images/Empereur Citoyen Esclave Emblem.png" alt="logo" width="80" height="80"
+                    class="rounded-md ">
+            </div>
+
+            <div class="flex gap-4">
+                <div id="img" class=" flex">
+                    <p class="text-white"> </p>
+                </div>
+
+                <div>
+                    <button type="button" id="deconnexion" class=" border-2 rounded-md text-white"> Déconnexion</button>
+                </div>
             </div>
         </div>
-        </div>
     </header>
-    <!---------------------------page de joueurs------------------>
-    <section class="hidden">
+                     <!---------------------------page de joueurs------------------>
+    <section id="page1">
         <div class=" flex mx-5">
 
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
@@ -73,7 +73,7 @@
             <div class="px-4 pt-4 ">
                 <p class="text-white font-serif">Avatar</p>
             </div>
-            <!----------------------div for avatars --------------------->
+                                 <!----------------------div for avatars --------------------->
             <div class=" grid grid-cols-5 gap-4 mt-5 px-18" id="avatars">
 
                 <img src="./src/images/cat (2).svg" alt="Avatar"
@@ -94,7 +94,7 @@
 
         </div>
 
-        <div id="players-list" class="mx-7 mt-10 bg-[#0F172A] h-70 rounded-xl p-4">
+        <div id="players-list" class="mx-7 mt-10 bg-[#0F172A] h-70 rounded-xl p-4 ">
             <div class="flex gap-4">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
                     <!-- Personne de gauche -->
@@ -113,21 +113,23 @@
             </div>
 
         </div>
-
+<div class="my-4 place-items-center mx-35" id="to-play">
+    <button id="play" type="button" class="bg-[#4A0000]  border-2  border-[#990000] w-25 text-white rounded-xl">Play</button>
+</div>
     </section>
     <!--------------------------------------------Deuxieme Section De Jeu------------------------------------>
-    <section>
+    <section id="page2" class="hidden">
         <div class=" grid grid-cols-2 bg-[#0F172A] mx-4 px-4  rounded-xl gap-4">
-            <div>   
+            <div>
                 <p class="text-white font-serif"> Manche </p>
-              
-                    <p class="rounds text-white " id="Rounds">Rounds</p>
+
+                <p class="rounds text-white " id="Rounds">Rounds</p>
             </div>
             <div>
                 <p class="text-white font-serif">Group</p>
-                
-                    <p class="Group text-white">nombers de Group</p>
-               
+
+                <p class="Group text-white">nombers de Group</p>
+
             </div>
             <div>
                 <p class="text-white font-serif">Camp</p>
@@ -140,63 +142,51 @@
         </div>
         <div class="mx-4 mt-5 px-4 bg-[#4A0000] rounded-xl pt-4 h-70">
             <div class="grid grid-cols-3 gap-4">
-                <img src="./src/images/Gemini_Generated_Image_x9nmw9x9nmw9x9nm.jpg"  alt=" adversaire" class="w-10 h-10 rounded-xl" >
+                <img src="./src/images/Gemini_Generated_Image_x9nmw9x9nmw9x9nm.jpg" alt=" adversaire"
+                    class="w-10 h-10 rounded-xl">
                 <p class="text-white font-serif "> Ordinatur</p>
-           
-            <div class="border border-2 border-[#990000] rounded-xl place-items-center">
-                <p class="font-serif text-white">Score</p>
-                <p class="score font-bold text-white"> 0</p>
+
+                <div class="border border-2 border-[#990000] rounded-xl place-items-center">
+                    <p class="font-serif text-white">Score</p>
+                    <p class="score font-bold text-white"> 0</p>
+                </div>
             </div>
+            <div class="grid grid-cols-5 pt-4 gap-4" id="bot">
+                                    <!--ZONE DES CARTES-->
+
             </div>
-<div class="grid grid-cols-5 pt-4 gap-4">
-<!-- <div id="carte1" class="border border-2 border-[#990000]">
-
-
-</div>
-<div id="carte2"class="border border-2 border-[#990000]">
-
-</div>
-<div id="carte3" class="border border-2 border-[#990000]">
-
-</div>
-<div id="carte4" class="border border-2 border-[#990000]">
-
-</div>
-<div id="carte5" class="border border-2 border-[#990000]">
-
-</div> -->
-
-</div>
 
         </div>
 
-       <div id="zone" class="bg-[#0F172A] rounded-xl mx-4 px-4 mt-4 place-items-center">
-<p class="text-white font-serif ">Zone de joue </p>
-        <div  id="zone-de-jeux" class="border">
+        <div id="zone" class="bg-[#0F172A] rounded-xl mx-4 px-4 mt-4 place-items-center">
+            <p class="text-white font-serif ">Zone de joue </p>
+            <div id="zone-de-jeux" class="border">
 
 
+            </div>
         </div>
-       </div>
 
-           <div class="mx-4 mt-5 px-4 bg-[#4A0000] rounded-xl pt-4 ">
+        <div class="mx-4 mt-5 px-4 bg-[#4A0000] rounded-xl pt-4 ">
             <div class="grid grid-cols-3">
-                
+
                 <p class="text-white font-serif" id="name-profile">Vous</p>
                 <div class="border border-2  border-[#990000] rounded-xl place-items-center">
                     <p class="font-serif text-white">Score </p>
                     <p class="font-bold text-white" id="score">0</p>
                 </div>
             </div>
-<div id="zone-des-cartes" class="grid grid-cols-5 h-70">
+            <div id="zone-des-cartes" class="grid grid-cols-5 h-70">
+                                        
+                                            <!--ZONE DES CARTES DE JOUEUR-->
 
-</div>
-    </div>
-    
-    
-    
+            </div>
+        </div>
+
+
+
     </section>
 
-        
+
 
     </div>
 

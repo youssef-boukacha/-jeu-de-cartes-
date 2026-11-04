@@ -19,4 +19,17 @@ removePlayers(event.target);
 
 });
 
+import { DistributionDesCartes } from "./game.js";
+const btnplay = document.getElementById("play")
+btnplay.addEventListener("click", () =>
+    { 
+    const section2 = document.getElementById("page2") ; /* section de joue */
+      
+        btnplay.closest("section").classList.add("hidden");
+    section2.classList.remove("hidden");
 
+           
+             DistributionDesCartes ();
+      
+          
+});

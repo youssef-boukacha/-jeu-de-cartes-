@@ -1,1 +1,1 @@
-let selectedProfiles = JSON.parse(localStorage.getItem("selectedprofiles")) || {};
+let selectedProfiles = JSON.parse(localStorage.getItem("selectedprofiles")) || {}; 
