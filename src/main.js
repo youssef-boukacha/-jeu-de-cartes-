@@ -32,4 +32,25 @@ btnplay.addEventListener("click", () =>
              DistributionDesCartes ();
       
           
+
 });
+import { joueur } from "./game.js";
+import { JouerUneCarte } from "./game.js";
+const carte= document.getElementById("zone-des-cartes")
+carte.addEventListener("click", function(event){
+    
+const img = event.target.closest(".carteDeJoeur")
+if (!img) return;
+const carteName = img.getAttribute("data-nom");
+const carteJoueur = joueur.find(carte => carte.name === carteName);
+
+const  zoneDeBattle = document.getElementById("zone-de-jeux");
+     zoneDeBattle.innerHTML = ` <div> 
+     <img src ="${carteJoueur.url}" alt ="${carteJoueur.nom}">
+</div>`
+ JouerUneCarte(carteJoueur);
+
+
+});
+
+    

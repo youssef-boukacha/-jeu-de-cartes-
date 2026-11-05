@@ -1,4 +1,4 @@
-let joueur =
+export let joueur =
     [{ name: "empereure", url: "src/images/empereur.png" },
     { name: "citoyen", url: "src/images/citoyen.png" },
     { name: "citoyen", url: "src/images/citoyen.png" },
@@ -21,16 +21,23 @@ export  function DistributionDesCartes (){
     joueur.forEach( (carte) => {
         joueur_carte.innerHTML +=`<div class= "py-4">
         <img src= "${carte.url}" alt="cartes" 
-        class= "border border-1 border-[#990000] gap-3 shadow-xl " id="carteDeJoue"> 
+        class= "carteDeJoeur border border-1 border-[#990000] gap-3 shadow-xl h-25 w-15" data-nom="${carte.name}"> 
         </div> `
     })
    ordinateur.forEach( (carteOrdi) => {
         ordinateur_carte.innerHTML +=`<div class= "py-4">
         <img src= "${carteOrdi.url}" alt="cartes" 
-        class= "border border-1 border-[#990000] gap-3 shadow-xl "> 
+        class= "carteDeOr border border-1 border-[#990000] gap-3 shadow-xl" data-nom="${carteOrdi.name}"> 
         </div> `
     })
 
+}
+
+ export function JouerUneCarte (carteJoueur){
+//      let  zoneDeBattle = document.getElementById("zone-de-jeux");
+//      zoneDeBattle.innerHTML = ` <div> 
+//      <img src ="${carteJoueur.url}" alt ="${carteJoueur.nom}">
+// </div>`
 }
 
 
