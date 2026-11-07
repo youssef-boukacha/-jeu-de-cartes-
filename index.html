@@ -31,7 +31,7 @@
             </div>
         </div>
     </header>
-                     <!---------------------------page de joueurs------------------>
+    <!---------------------------page de joueurs------------------>
     <section id="page1">
         <div class=" flex mx-5">
 
@@ -73,7 +73,7 @@
             <div class="px-4 pt-4 ">
                 <p class="text-white font-serif">Avatar</p>
             </div>
-                                 <!----------------------div for avatars --------------------->
+            <!----------------------div for avatars --------------------->
             <div class=" grid grid-cols-5 gap-4 mt-5 px-18" id="avatars">
 
                 <img src="./src/images/cat (2).svg" alt="Avatar"
@@ -94,7 +94,7 @@
 
         </div>
 
-        <div id="players-list" class="mx-7 mt-10 bg-[#0F172A] h-70 rounded-xl p-4 ">
+        <div id="players-list" class="mx-7 mt-10 bg-[#0F172A]  rounded-xl p-4 ">
             <div class="flex gap-4">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
                     <!-- Personne de gauche -->
@@ -113,9 +113,10 @@
             </div>
 
         </div>
-<div class="my-4 place-items-center mx-35" id="to-play">
-    <button id="play" type="button" class="bg-[#4A0000]  border-2  border-[#990000] w-25 text-white rounded-xl">Play</button>
-</div>
+        <div class="my-4 place-items-center mx-35" id="to-play">
+            <button id="play" type="button"
+                class="bg-[#4A0000]  border-2  border-[#990000] w-25 text-white rounded-xl">Play</button>
+        </div>
     </section>
     <!--------------------------------------------Deuxieme Section De Jeu------------------------------------>
     <section id="page2" class="hidden">
@@ -128,56 +129,94 @@
             <div>
                 <p class="text-white font-serif">Group</p>
 
-                <p class="Group text-white">nombers de Group</p>
+                <p id="Group" class="Group text-white">nombers de Group</p>
 
             </div>
             <div>
                 <p class="text-white font-serif">Camp</p>
-                <p class="camp text-white"> champion</p>
+                <p id="Camp" class="camp text-white"> champion</p>
             </div>
-            <div>
-                <p class="text-white font-serif">Premiere a jouer </p>
-                <p class="role text-white">Empereur</p>
-            </div>
+           <div>
+    <p class="text-white font-serif">Premier joueur</p>
+    <p id="PremierJoueur" class="text-white">Empereur</p>
+</div>
         </div>
         <div class="mx-4 mt-5 px-4 bg-[#4A0000] rounded-xl pt-4">
             <div class="grid grid-cols-3 gap-4">
                 <img src="./src/images/Gemini_Generated_Image_x9nmw9x9nmw9x9nm.jpg" alt=" adversaire"
                     class="w-10 h-10 rounded-xl">
-                <p class="text-white font-serif "> Ordinatur</p>
+                <p class="text-white font-serif "> Ordinateur</p>
 
                 <div class="border border-2 border-[#990000] rounded-xl place-items-center">
                     <p class="font-serif text-white">Score</p>
                     <p class="score font-bold text-white"> 0</p>
+
                 </div>
+              
+            
             </div>
             <div class="grid grid-cols-5 pt-4 gap-4" id="bot">
-                                    <!--ZONE DES CARTES-->
+                <!--ZONE DES CARTES-->
+                
+                    
+                    <div>
+                        <img src="./src/images/back.jpg "
+                            class="border border-1 border-[#990000]  shadow-xl ">
+                        
 
+                    </div>
+                    <div >
+                        <img src="./src/images/back.jpg"
+                            class="border border-1 border-[#990000]  shadow-xl">
+
+                    </div>
+                    <div>
+                        <img src="./src/images/back.jpg"
+                            class="border border-1 border-[#990000]  shadow-xl ">
+
+                    </div>
+                    <div>
+                        <img src="./src/images/back.jpg"
+                            class="border border-1 border-[#990000]  shadow-xl ">
+
+                    </div>
+                    <div>
+                        <img src="./src/images/back.jpg"
+                            class="border border-1 border-[#990000]  shadow-xl">
+
+                   
             </div>
 
         </div>
 
         <div id="zone" class="bg-[#0F172A] rounded-xl mx-4 px-4 mt-4 place-items-center">
             <p class="text-white font-serif ">Zone de joue </p>
-            <div id="zone-de-jeux" class="border">
+            <div class="flex flex p-2 gap-4">
+                <div id="zone-de-jeux" class="border">
 
 
+                </div>
+
+                <div id="zone-de-jeux-ordi">
+
+                </div>
             </div>
         </div>
 
-        <div class="mx-4 mt-5 px-4 bg-[#4A0000] rounded-xl pt-4 ">
-            <div class="grid grid-cols-3">
+       <div id="avatarDejoeur" class="grid grid-cols-3">
+    <div id="profile-game" class="flex items-center gap-2">
+        <img id="game-avatar" src="" class="w-10 h-10 rounded-md hidden">
+        <p class="text-white font-serif" id="name-profile">Vous</p>
+    </div>
 
-                <p class="text-white font-serif" id="name-profile">Vous</p>
-                <div class="border border-2  border-[#990000] rounded-xl place-items-center">
-                    <p class="font-serif text-white">Score </p>
-                    <p class="font-bold text-white" id="score">0</p>
-                </div>
-            </div>
+    <div class="border border-2 border-[#990000] rounded-xl place-items-center">
+        <p class="font-serif text-white">Score</p>
+        <p class="font-bold text-white" id="score">0</p>
+    </div>
+</div>
             <div id="zone-des-cartes" class="grid grid-cols-5 gap-4">
-                                        
-                                            <!--ZONE DES CARTES DE JOUEUR-->
+
+                <!--ZONE DES CARTES DE JOUEUR-->
 
             </div>
         </div>
@@ -191,6 +230,37 @@
     </div>
 
 
+
+<section id="page3" class="hidden mx-4 mt-8 bg-[#0F172A] rounded-xl p-6 text-center">
+
+    <h2 class="text-white text-2xl font-bold">
+        Fin de la partie !
+    </h2>
+
+    <p id="winner" class="text-white text-xl mt-4">
+        Résultat
+    </p>
+
+    <div class="grid grid-cols-2 gap-4 mt-6">
+
+        <div>
+            <p class="text-white">Votre score</p>
+            <p id="final-score-player" class="text-white text-2xl font-bold">0</p>
+        </div>
+
+        <div>
+            <p class="text-white">Score ordinateur</p>
+            <p id="final-score-bot" class="text-white text-2xl font-bold">0</p>
+        </div>
+
+    </div>
+
+    <button id="back-profile"
+        class="mt-6 bg-[#4A0000] border-2 border-[#990000] text-white rounded-xl px-5 py-2">
+        Retour aux profils
+    </button>
+
+</section>
 
 
     <script type="module" src="./src/main.js"></script>
