@@ -2,7 +2,8 @@
 import {
     GetSelectedPlayer,
     SaveScores,
-    GetScores
+    GetScores,
+    SaveGame
 } from "./storage.js";
 
 // Les cartes du joueur
@@ -306,4 +307,30 @@ export function AfficherResultatFinal() {
     else {
         winnerHTML.textContent = "Match nul !";
     }
+}
+
+export function EnregistrerPartie() {
+    const playerId = GetSelectedPlayer();
+
+    const result =
+        scoreJoueur > scoreOrdinateur
+            ? "victoire"
+            : scoreJoueur < scoreOrdinateur
+                ? "défaite"
+                : "égalité";
+
+   const game = {
+    id: `g_${Date.now()}`,
+    playerId: playerId,
+    date: new Date().getFullYear() + "-" +
+        String(new Date().getMonth() + 1).padStart(2, "0") + "-" +
+        String(new Date().getDate()).padStart(2, "0") + "T" +
+        String(new Date().getHours()).padStart(2, "0") + ":" +
+        String(new Date().getMinutes()).padStart(2, "0"),
+    playerScore: scoreJoueur,
+    computerScore: scoreOrdinateur,
+    result: result
+};
+
+    SaveGame(game);
 }

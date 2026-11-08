@@ -40,3 +40,26 @@ export function GetScores(playerId) {
         scoreOrdinateur: 0
     };
 }
+
+// Historique des parties
+
+export function SaveGame(game) {
+    const history = JSON.parse(localStorage.getItem("history")) || [];
+
+    history.push(game);
+
+    localStorage.setItem("history", JSON.stringify(history));
+}
+
+export function GetHistory() {
+    return JSON.parse(localStorage.getItem("history")) || [];
+}
+export function DeleteGame(gameId) {
+    const history = GetHistory();
+
+    const updatedHistory = history.filter(game => {
+        return game.id !== gameId;
+    });
+
+    localStorage.setItem("history", JSON.stringify(updatedHistory));
+}

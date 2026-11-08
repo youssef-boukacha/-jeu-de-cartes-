@@ -15,8 +15,15 @@ import {
     ChargerScores,
     AppliquerResultat,
     FinManche,
-    AfficherResultatFinal
+    AfficherResultatFinal,
+    EnregistrerPartie
 } from "./game.js";
+
+import {
+    GetHistory,
+    GetPlayers,
+    DeleteGame
+} from "./storage.js";
 
 
 // Afficher les joueurs sauvegardés
@@ -66,6 +73,15 @@ btnplay.addEventListener("click", () => {
 });
 
 
+// Retour vers les profils
+const backProfile = document.getElementById("back-profile");
+
+backProfile.addEventListener("click", () => {
+    document.getElementById("page3").classList.add("hidden");
+    document.getElementById("page1").classList.remove("hidden");
+});
+
+
 // Jouer une carte
 const carte = document.getElementById("zone-des-cartes");
 const bot = document.getElementById("bot");
@@ -85,14 +101,6 @@ carte.addEventListener("click", function(event) {
     const carteJoueur = joueur.find(carte => {
         return carte.name === carteName;
     });
-    const backProfile = document.getElementById("back-profile");
-
-backProfile.addEventListener("click", () => {
-
-    document.getElementById("page3").classList.add("hidden");
-    document.getElementById("page1").classList.remove("hidden");
-
-});
 
     if (!carteJoueur || ordinateur.length === 0) return;
 
@@ -105,7 +113,6 @@ backProfile.addEventListener("click", () => {
 
     // Afficher les deux cartes
     JouerUneCarte(carteJoueur, carteOrdi);
-
 
     setTimeout(() => {
 
@@ -121,22 +128,165 @@ backProfile.addEventListener("click", () => {
         joueur.splice(joueur.indexOf(carteJoueur), 1);
         ordinateur.splice(index, 1);
 
-
         // Vérifier si toutes les cartes sont jouées
         if (joueur.length === 0 && ordinateur.length === 0) {
 
             const partieContinue = FinManche();
 
             if (!partieContinue) {
-    AfficherResultatFinal();
-    enCours = true;
-    return;
-}
+                EnregistrerPartie();
+                AfficherResultatFinal();
+                enCours = true;
+                return;
+            }
         }
 
-        // Autoriser le prochain duel
         enCours = false;
 
     }, 700);
+
+});
+
+
+// Afficher l'historique
+const btnHistory = document.getElementById("btn-history");
+const backResults = document.getElementById("back-results");
+
+btnHistory.addEventListener("click", () => {
+
+    document.getElementById("page1").classList.add("hidden");
+    document.getElementById("page2").classList.add("hidden");
+    document.getElementById("page3").classList.add("hidden");
+
+    AfficherHistorique();
+
+    document.getElementById("page4").classList.remove("hidden");
+});
+
+
+// Retour depuis l'historique
+backResults.addEventListener("click", () => {
+
+    document.getElementById("page4").classList.add("hidden");
+    document.getElementById("page1").classList.remove("hidden");
+});
+
+
+// Fonction pour afficher l'historique
+function AfficherHistorique() {
+
+    const history = GetHistory();
+    const players = GetPlayers();
+
+    const historyList = document.getElementById("history-list");
+    const searchInput = document.getElementById("search-history");
+    const filterResult = document.getElementById("filter-result");
+const filterDate = document.getElementById("filter-date");
+    const searchValue = searchInput.value.trim().toLowerCase();
+    const selectedResult = filterResult.value;
+const selectedDate = filterDate.value;
+    historyList.innerHTML = "";
+
+    // Trier les parties de la plus récente à la plus ancienne
+    history.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // Filtrer les parties
+    const filteredHistory = history.filter((game) => {
+
+        const player = players.find(p => p.id === game.playerId);
+
+        const nickname = player
+            ? player.nickname.toLowerCase()
+            : "joueur inconnu";
+
+        const searchMatch = nickname.includes(searchValue);
+
+        const resultMatch =
+            selectedResult === "all" ||
+            game.result === selectedResult;
+const gameDate = new Date(game.date);
+const today = new Date();
+
+today.setHours(0, 0, 0, 0);
+
+const sevenDaysAgo = new Date(today);
+sevenDaysAgo.setDate(today.getDate() - 6);
+
+const dateMatch =
+    selectedDate === "all" ||
+    (selectedDate === "today" && gameDate >= today) ||
+    (selectedDate === "week" && gameDate >= sevenDaysAgo && gameDate <= new Date());
+return searchMatch && resultMatch && dateMatch;    });
+
+    // Vérifier si l'historique est vide
+    if (filteredHistory.length === 0) {
+        historyList.textContent = "Aucune partie trouvée.";
+        return;
+    }
+
+    // Afficher les parties
+    filteredHistory.forEach((game) => {
+
+        const player = players.find(p => p.id === game.playerId);
+        const nickname = player ? player.nickname : "Joueur inconnu";
+historyList.innerHTML += `
+    <div class="bg-[#1F2937] rounded-xl p-4 mt-4 text-white">
+
+        <p>Joueur : ${nickname}</p>
+        <p>Score joueur : ${game.playerScore}</p>
+        <p>Score ordinateur : ${game.computerScore}</p>
+        <p>Résultat : ${game.result}</p>
+        <p>Date : ${game.date}</p>
+
+        <button
+            type="button"
+            class="delete-game bg-red-600 text-white rounded-lg px-4 py-2 mt-3"
+            data-id="${game.id}">
+            Supprimer
+        </button>
+
+    </div>
+`;
+    });
+}
+
+
+// Recherche par nickname
+const searchInput = document.getElementById("search-history");
+
+searchInput.addEventListener("input", () => {
+    AfficherHistorique();
+});
+
+
+// Filtrer par résultat
+const filterResult = document.getElementById("filter-result");
+
+filterResult.addEventListener("change", () => {
+    AfficherHistorique();
+});
+
+const filterDate = document.getElementById("filter-date");
+
+filterDate.addEventListener("change", () => {
+    AfficherHistorique();
+});
+const historyList = document.getElementById("history-list");
+
+historyList.addEventListener("click", (event) => {
+
+    if (event.target.classList.contains("delete-game")) {
+
+        const gameId = event.target.dataset.id;
+
+        const confirmation = confirm(
+            "Voulez-vous vraiment supprimer cette partie ?"
+        );
+
+        if (confirmation) {
+            DeleteGame(gameId);
+            AfficherHistorique();
+        }
+    }
 
 });

@@ -24,9 +24,13 @@
                 <div id="img" class=" flex">
                     <p class="text-white"> </p>
                 </div>
-
+ <button type="button" id="btn-history"
+        class="border-2 rounded-md text-white font-serif px-4 bg-[#4A0000] h-10">
+        Historique
+    </button>
                 <div>
-                    <button type="button" id="deconnexion" class=" border-2 rounded-md text-white"> Déconnexion</button>
+                    <button type="button" id="deconnexion" 
+        class=" border-2 rounded-md text-white font-serif px-4 bg-[#4A0000] h-10"> Déconnexion</button>
                 </div>
             </div>
         </div>
@@ -260,8 +264,47 @@
         Retour aux profils
     </button>
 
+<button id="btn-history" class="text-white rounded-xl bg-[#4A0000]   border-2 border-[#990000]  px-5 py-2">
+    Historique des parties
+</button>
 </section>
 
+<section id="page4" class="hidden">
+
+    <h2 class="text-white font-serif">Historique des parties</h2>
+<div class="mt-4">
+    <input
+        type="text"
+        id="search-history"
+        placeholder="Rechercher par nickname..."
+        class="bg-[#1F2937] text-white rounded-xl p-2 w-full"
+    >
+    <select id="filter-result"
+    class="bg-[#1F2937] text-white rounded-xl p-2 mt-3">
+
+    <option value="all">Toutes les parties</option>
+    <option value="victoire">Victoires</option>
+    <option value="défaite">Défaites</option>
+    <option value="égalité">Égalités</option>
+
+</select>
+<select id="filter-date"
+    class="bg-[#1F2937] text-white rounded-xl p-2 mt-3">
+
+    <option value="all">Toutes les dates</option>
+    <option value="today">Aujourd'hui</option>
+    <option value="week">Les 7 derniers jours</option>
+
+</select>
+</div>
+    <div id="history-list">
+    </div>
+<button id="back-results"
+    class="bg-[#4A0000] text-white rounded-xl px-5 py-2">
+    Retour
+</button>
+
+</section>
 
     <script type="module" src="./src/main.js"></script>
 </body>
